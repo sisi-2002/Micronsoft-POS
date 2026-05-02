@@ -128,7 +128,7 @@ source venv/bin/activate
 # Activate (Windows)
 venv\Scripts\activate
 
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 ```
 
 Open `backend/core/settings.py` and update the `DATABASES` section with your MySQL credentials:
