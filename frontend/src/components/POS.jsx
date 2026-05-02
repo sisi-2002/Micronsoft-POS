@@ -71,9 +71,13 @@ export default function POS() {
         items: cart.map(i => ({ product_id: i.id, quantity: i.qty })),
         total_amount: total.toFixed(2),
       }
-      const res = await postCheckout(payload)
-      notify.success('Order placed successfully!')
-      setReceipt({ order: res.data, items: cart, total })
+     const res = await postCheckout(payload)
+notify.success('Order placed successfully!')
+setReceipt({
+  order: { id: res.data.order_id },   // ← map order_id → id
+  items: cart,
+  total,
+})
       setCart([])
     } catch (err) {
       const msg = err.response?.data?.error || 'Checkout failed'
